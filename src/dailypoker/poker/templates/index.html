@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block cssstyle %}
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+    <link href="{% static "css/clockstyle.css" %}" rel="stylesheet">
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/test2.js' %}" type="text/javascript"></script>
+    <style id="clock-animations"></style>
+{% endblock %}
+
+{% block navgation %}
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav masthead-nav ml-auto">
+            <li><a class="navbar-brand" href="{% url 'create' %}">
+                <img src="/static/images/heart.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                CreateRoom
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'join' %}">
+                <img src="/static/images/spade.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Join
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'help' %}">
+                <img src="/static/images/diamond.png" width="30" height="30"
+                     class="d-inline-block align-top" alt="">
+                Rule
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'logout' %}">
+                <img src="/static/images/club.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Logout
+            </a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+
+
+{% block mainbody %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h2>Welcome {{ profile.user.username }}</h2>
+                    <p>Firstname: {{ profile.user.first_name }}</p>
+                    <p>Lastname: {{ profile.user.last_name }}</p>
+                    <p>E-MAIL: {{ profile.user.email }}</p>
+                    <p>Asset: {{ profile.asset }}</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

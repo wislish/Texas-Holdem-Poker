@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block errorpanel %}
+    <label readonly="readonly">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </label>
+{% endblock %}
+{% block mainbody %}
+    <div style="height:100px">
+    </div>
+    <div class="poker-main-middle poker-login-middle">
+        <div class="row">
+            <div class="col-8">
+                <form class="form-signin" method="post" action="{% url 'register' %}">
+                    <h2 class="form-signin-heading">Sign Up</h2>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    {% for field in form.visible_fields %}
+                        {% if forloop.counter > 2 %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
+                    <button class="btn btn-lg btn-block" type="submit">Create Account</button>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

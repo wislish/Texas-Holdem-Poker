@@ -1,0 +1,16 @@
+{
+  "winner":"testwinner",
+  "chips":"100",
+  "cards_otherplayers": [
+    {
+      "playerId": "1",
+      "card0":"8H",
+      "card1":"9K"
+    },
+    {
+      "playerId": "2",
+      "card0":"2H",
+      "card1":"3K"
+    }
+  ]
+}

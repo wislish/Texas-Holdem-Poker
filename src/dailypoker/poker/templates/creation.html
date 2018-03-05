@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block cssstyle %}
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+    <link href="{% static "css/roomcreation.css" %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block navgation %}
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav masthead-nav ml-auto">
+            <li><a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/static/images/heart.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Home
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'join' %}">
+                <img src="/static/images/spade.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Join
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'help' %}">
+                <img src="/static/images/diamond.png" width="30" height="30"
+                     class="d-inline-block align-top" alt="">
+                Rule
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'logout' %}">
+                <img src="/static/images/club.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Logout
+            </a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block mainbody %}
+    <hr>
+    <div class="createroome">
+        <form method="post" action="{% url 'newgame' %}">
+
+            <label for="num" class="col-sm-3 contro-label">Max Player</label>
+            <select id="num" class="custom-select">
+                <option value="1">6</option>
+                <option value="2">9</option>
+            </select>
+            <hr>
+
+            <label for="blind" class="col-sm-3 contro-label">Stakes</label>
+            <select id="blind" class="custom-select">
+                <option value="1">10/20</option>
+                <option value="2">25/50</option>
+                <option value="3">50/100</option>
+            </select>
+            <hr>
+            {% if error %}
+               {{ error }}<br/>
+            {% endif %}
+            <label for="buyin" class="col-sm-3 contro-label">Buy In</label>
+            <select id="buyin" class="custom-select" name="buyin-select">
+                <option value="1">600</option>
+                <option value="2">1500</option>
+                <option value="3">3000</option>
+            </select>
+            <button type="submit" class="btn button_example">Create</button>
+        {% csrf_token %}
+
+        </form>
+    </div>
+{% endblock %}

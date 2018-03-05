@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block cssstyle %}
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block navgation %}
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav masthead-nav ml-auto">
+            <li><a class="navbar-brand" href="#">
+                <img src="/static/images/heart.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                CreateRoom
+            </a></li>
+            <li><a class="navbar-brand" href="#">
+                <img src="/static/images/spade.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Ranking
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'help' %}">
+                <img src="/static/images/diamond.png" width="30" height="30"
+                     class="d-inline-block align-top" alt="">
+                Rule
+            </a></li>
+            <li><a class="navbar-brand" href="#">
+                <img src="/static/images/club.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Logout
+            </a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block mainbody %}
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">6 Table</th>
+            <th scope="col">Player</th>
+            <th scope="col">Score</th>
+            <th scope="col">Rank</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>340000</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>12000</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>23000</td>
+            <td>3</td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

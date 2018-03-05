@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block cssstyle %}
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block navgation %}
+
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav masthead-nav ml-auto">
+            <li><a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/static/images/heart.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Home
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'create' %}">
+                <img src="/static/images/spade.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                CreateRoom
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'help' %}">
+                <img src="/static/images/diamond.png" width="30" height="30"
+                     class="d-inline-block align-top" alt="">
+                Rule
+            </a></li>
+            <li><a class="navbar-brand" href="{% url 'logout' %}">
+                <img src="/static/images/club.png" width="30" height="30" class="d-inline-block align-top"
+                     alt="">
+                Logout
+            </a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block mainbody %}
+
+    {% if error %}
+        <p style="font-size: medium" class="alert alert-danger">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <hr>
+           <div class="roomlist">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="bg-danger">
+                    <th scope="col">Room Number</th>
+                    <th scope="col">Members</th>
+                    <th scope="col">Blind</th>
+                    <th scope="col">Buy-In</th>
+                    <th scope="col">Is Start?</th>
+                </tr>
+                </thead>
+                <tbody>
+                 {% for item in items %}
+                <tr class="table-light select clickable-row"  data-href="{% url 'game' item.id%}">
+{#                <a href="\"http://localhost:8000/poker/game/"+ {{ item.id }}+ "'" >#}
+                    <td scope="row">{{ item.id }}</td>
+                    <td>{{ item.num_players }}</td>
+                    <td>{{ item.blind }}</td>
+                    <td>{{ item.buyin }}</td>
+                    <td>{{ item.is_start }}</td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

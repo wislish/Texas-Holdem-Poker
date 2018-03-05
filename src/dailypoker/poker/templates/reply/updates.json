@@ -1,0 +1,4 @@
+{"pot_size":"{{pot_size}}", "max_bet":"{{max_bet}}", "round_status":"{{round_status}}", "is_finished":"{{is_finished}}", "desk":
+[{% for card in desk %}{%spaceless%}{% include 'reply/card.json' %}{%endspaceless%}{% if not forloop.last %}, {% endif %}{% endfor %}],
+  "players":[{% for player in players %}{%spaceless%}{% include 'reply/player.json' %}{%endspaceless%}{% if not forloop.last %}, {% endif %}{% endfor %}]
+}

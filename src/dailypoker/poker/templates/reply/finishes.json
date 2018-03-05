@@ -1,0 +1,7 @@
+{
+  "winner":"{{winner}}",
+  "chips":"{{chips}}",
+  "lastBet":"{{last}}",
+  "pot_size":"{{pot}}",
+  "rival": [{% for card in rival %}{%spaceless%}{% include 'reply/card.json' %}{%endspaceless%}{% if not forloop.last %}, {% endif %}{% endfor %}]
+}

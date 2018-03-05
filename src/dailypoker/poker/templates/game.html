@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow:hidden; margin:0">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Welcome to Daily Poker!</title>
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="{% static "css/game.css" %}" rel="stylesheet">
+    <link href="{% static "css/clockstyle.css" %}" rel="stylesheet">
+    <link href="{% static "css/cstyle.css" %}" rel="stylesheet">
+
+    <style id="clock-animations"></style>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/soundjs-0.5.2.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/test.js' %}" type="text/javascript"></script>
+    <script src="{% static "js/clock.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/websocketbridge.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/soundjs-NEXT.js" %}" type="text/javascript"></script>
+    <script id="editable">
+        var assetsPath = ""
+        var preload;
+        {% load staticfiles %}
+
+        function init() {
+            if (!createjs.Sound.initializeDefaultPlugins()) {
+                document.getElementById("error").style.display = "block";
+                document.getElementById("mychoice-group").style.display = "none";
+                return;
+            }
+            var assetsPath = "/static/sounds/"
+            var sounds = [{src: "button.wav", id: "mychoice-start"},
+                {src: "chipsHandle6.wav", id: "mychoice-check"},
+
+                {src: "chipsHandle6.wav", id: "mychoice-call"},
+                {src: "chipsHandle6.wav", id: "mychoice-bet"},
+                {src: "chipsHandle6.wav", id: "mychoice-fold"},
+            ]
+            createjs.Sound.alternateExtensions = ["wav"];	// add other extensions to try loading if the src file extension is not supported
+            createjs.Sound.addEventListener("fileload", createjs.proxy(soundLoaded, this)); // add an event listener for when load is completed
+            createjs.Sound.registerSounds(sounds, assetsPath);
+        }
+
+        function soundLoaded(event) {
+            //examples.hideDistractor();
+            var div = document.getElementById(event.id);
+            // div.style.backgroundImage = "url('../_assets/art/audioButtonSheet.png')";
+        }
+
+        function stop() {
+            if (preload != null) {
+                preload.close();
+            }
+            createjs.Sound.stop();
+        }
+
+        function playSound(target) {
+            //Play the sound: play (src, interrupt, delay, offset, loop, volume, pan)
+            var instance = createjs.Sound.play(target.id);
+            if (instance == null || instance.playState == createjs.Sound.PLAY_FAILED) {
+                return;
+            }
+        }
+
+
+    </script>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body onload="init()">
+<img src="/static/images/blackjack2.png" class="card-image">
+<header>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
+    <div class="container header inner">
+        <nav class="navbar  navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="/static/images/logo2.png" width="50" height="50" class="d-inline-block align-top"
+                             alt="">
+                        Hold'EM POKER
+                    </a>
+                </div>
+
+                <div >
+                       <button id="leave" type="button" class="leavebt" onclick="leaveGame()">LEAVE</button>
+{#                    <a class="navbar-brand" onclick="leaveGame()" href="#">#}
+{#                        <b>LEAVE</b>#}
+{#                    </a>#}
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="row1">
+
+    <div class="cardslayout0">
+
+
+        <div class="player">
+            <div class="state0">
+                <span class="label label-default rank-label">not ready</span>
+            </div>
+            <img id="clock0" class="avaimg " alt="" src="/static/images/logo.png">
+            <div class="rank-label-container">
+                <div id="action0"><span class="label label-default rank-label">action</span></div>
+                <div id="chips0"><span class="label label-default rank-label2">chips</span></div>
+                <p1 id="name0">name</p1>
+            </div>
+        </div>
+        <div id="rivalcards" class="rivalcards">
+            <img class="pcard1" src="/static/images/cardset/red_back.png" alt="">
+            <img class="pcard2" src="/static/images/cardset/red_back.png" alt="">
+        </div>
+        <div id="accum_bet0" class="chip">
+
+            <div><img class="chipimg" alt="" src="/static/images/chip.png"> chips</div>
+
+        </div>
+
+    </div>
+    <div class="cardslayout1">
+
+        <div class="player">
+            <div class="state1">
+                <span class="label label-default rank-label">not ready</span>
+            </div>
+            <img id="clock1" class="avaimg" alt="" src="/static/images/logo.png">
+            <div class="rank-label-container">
+                <div id="action1"><span class="label label-default rank-label">action</span></div>
+                <div id="chips1"><span class="label label-default rank-label2">chips</span></div>
+                <p1 id="name1">name</p1>
+            </div>
+        </div>
+        <div id="rivalcards" class="rivalcards">
+            <img class="pcard1" src="/static/images/cardset/red_back.png" alt="">
+            <img class="pcard2" src="/static/images/cardset/red_back.png" alt="">
+        </div>
+        <div id="accum_bet1" class="chip">
+
+            <div><img class="chipimg" alt="" src="/static/images/chip.png"> chips</div>
+
+        </div>
+    </div>
+
+    <div class="cardslayout2 ">
+
+        <div class="player">
+            <div class="state2">
+                <span class="label label-default rank-label">not ready</span>
+
+            </div>
+            <img id="clock2" class="avaimg" alt="" src="/static/images/logo.png">
+            <div class="rank-label-container">
+                <div id="action2"><span class="label label-default rank-label">action</span></div>
+                <div id="chips2"><span class="label label-default rank-label2">chips</span></div>
+                <p1 id="name2">name</p1>
+            </div>
+        </div>
+        <div id="rivalcards" class="rivalcards">
+            <img class="pcard1" src="/static/images/cardset/red_back.png" alt="">
+            <img class="pcard2" src="/static/images/cardset/red_back.png" alt="">
+        </div>
+        <div id="accum_bet2" class="chip">
+
+            <div><img class="chipimg" alt="" src="/static/images/chip.png"> chips</div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="oval">
+
+
+    <label class="hidden" id="gid">{{ gid }}</label>
+    <div id="desk-cards" class="deskcardslayout">
+        <img class="dcard" id="dcard0" src="/static/images/cardset/red_back.png" alt="">
+        <img class="dcard" id="dcard1" src="/static/images/cardset/red_back.png" alt="">
+        <img class="dcard" id="dcard2" src="/static/images/cardset/red_back.png" alt="">
+        <img class="dcard" id="dcard3" src="/static/images/cardset/red_back.png" alt="">
+        <img class="dcard" id="dcard4" src="/static/images/cardset/red_back.png" alt="">
+    </div>
+
+    <div class="gap">
+        <div class="row2">
+            <div class="cardslayout4">
+
+
+                <div class="player">
+                    <div class="state4">
+                        <span class="label label-default rank-label">not ready</span>
+
+                    </div>
+                    <img id="clock4" class="avaimg" alt="" src="/static/images/logo.png">
+                    <div class="rank-label-container">
+                        <div><span id="action4" class="label label-default rank-label">action</span></div>
+                        <div><span id="chips4" class="label label-default rank-label2">chips</span></div>
+                        <p1 id="name4">name</p1>
+                    </div>
+                </div>
+                <div id="rivalcards" class="rivalcards">
+                    <img class="pcard1" src="/static/images/cardset/red_back.png" alt="">
+                    <img class="pcard2" src="/static/images/cardset/red_back.png" alt="">
+                </div>
+                <div id="accum_bet4" class="chip">
+
+                    <div><img class="chipimg" alt="" src="/static/images/chip.png"> chips</div>
+
+                </div>
+
+            </div>
+
+            <div class="cardslayout3">
+
+                <div class="player">
+                    <div class="state3">
+                        <span class="label label-default rank-label">not ready</span>
+                    </div>
+                    <img id="clock3" class="avaimg" alt="" src="/static/images/logo.png">
+                    <div class="rank-label-container">
+                        <div id="action3"><span class="label label-default rank-label"></span></div>
+                        <div id="chips3"><span class="label label-default rank-label2">chips</span></div>
+                        <p1 id="name3">name</p1>
+                    </div>
+                </div>
+                <div id="rivalcards" class="rivalcards">
+                    <img class="pcard1" src="/static/images/cardset/red_back.png" alt="">
+                    <img class="pcard2" src="/static/images/cardset/red_back.png" alt="">
+                </div>
+                <div id="accum_bet3" class="chip">
+                    <div><img class="chipimg" alt="" src="/static/images/chip.png"> chips</div>
+                </div>
+            </div>
+        </div>
+        <div id="totalchips" class="totalchips">
+            <div><img class="chipimg" alt="" src="/static/images/chip.png">chips</div>
+        </div>
+    </div>
+    <div id="cardslayout" class="cardslayout">
+
+
+        <div id="mainplayer" class="mainplayer">
+            <img id="myclock" class="avaimg " alt="" src="/static/images/luffy.jpeg">
+
+            <div class="rank-label-container">
+                <div id="myaction"><span class="label label-default rank-label">action</span></div>
+                <div><span id="mychips" class="label label-default rank-label2">{{ buyin }}</span></div>
+                <p1 id="myname">{{ name }}</p1>
+            </div>
+        </div>
+        <div id="mycards" class="mycards">
+            <img class="pcard1" src="/static/images/cardset/red_back.png" alt="">
+            <img class="pcard2" src="/static/images/cardset/red_back.png" alt="">
+        </div>
+        <div id="myaccumbet" class="chip">
+            <div><img class="chipimg" alt="" src="/static/images/chip.png"> chips</div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment"></span> Chat
+
+                    </div>
+                    <div class="panel-body">
+                        <ul class="chat" id="chatpart">
+
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm"
+                                   placeholder="Type your message here..."/>
+                            <span class="input-group-btn">
+                            <button class="btn btn-success btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottompart">
+    <div id="mychoice-group" class="button-group">
+
+        <button id="mychoice-start" type="button" class="snip1434" onclick="playSound(this)">Prepare<i
+                class="ion-cash"></i></button>
+        <div id="buttonCombo">
+            <div class="upperbutton">
+                <button id="mychoice-allin" type="button" class="snip1434" onclick="playSound(this)">All-In<i
+                        class="ion-cash"></i></button>
+                <button id="mychoice-check" type="button" class="snip1434" onclick="playSound(this)">Check<i
+                        class="ion-cash"></i></button>
+                <button id="mychoice-call" type="button" class="snip1434" onclick="playSound(this)">Call<i
+                        class="ion-cash"></i></button>
+            </div>
+            <span id="slider_value" style="color:red;"></span>
+            <input id='cost' width="400" type="range" min="0" max="600" name="sld3" value="0" step="20"
+                   onchange="show_value(this.value);">
+
+            <button id="mychoice-bet" type="button" class="snip1434" onclick="playSound(this)">Bet<i
+                    class="ion-cash"></i></button>
+            <button id="mychoice-fold" type="button" class="snip1434" onclick="playSound(this)">Fold<i
+                    class="ion-cash"></i></button>
+            <br/>
+
+        </div>
+
+    </div>
+
+
+</div>
+<div class="hidden" id="winner">
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <div id='title'>
+  <span id="winnername">
+    Winner
+  </span>
+    </div>
+</div>
+
+
+<div class="clock-wrapper clock-hidden">
+
+    <div class="clock-base">
+        <div class="clock-second"></div>
+        <div class="clock-center"></div>
+    </div>
+</div>
+<div id="clock-digit" class="clock-hidden">
+
+</div>
+
+
+</body>
+
+</html>

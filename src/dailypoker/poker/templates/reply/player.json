@@ -1,0 +1,10 @@
+{
+  "id": "{{player.id}}",
+  "name": "{{player.playername}}",
+  "BeginChip": "{{player.begin_chip}}",
+  "RoundBet": "{{player.round_bet}}",
+  "AccumBet": "{{player.accum_bet}}",
+  "card0": "{{player.card_one}}",
+  "card1": "{{player.card_two}}",
+  "html": "{{player.html|safe}}"
+}

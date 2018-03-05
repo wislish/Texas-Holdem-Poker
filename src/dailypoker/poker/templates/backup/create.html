@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Welcome to Daily Poker!</title>
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+
+<body>
+
+<header>
+    <div class="container header inner">
+        <nav class="navbar  navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+
+                    </button>
+
+
+                    <a class="navbar-brand" href="#">
+                        <img src="/static/images/logo2.png" width="50" height="50" class="d-inline-block align-top"
+                             alt="">
+
+                        Hold'EM POKER
+                    </a>
+                    {#                    <a class="navbar-brand" href="#">Company</a>#}
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav masthead-nav ml-auto">
+                        <li><a class="navbar-brand" href="#">
+                            <img src="/static/images/heart.png" width="30" height="30" class="d-inline-block align-top"
+                                 alt="">
+                            CreateRoom
+                        </a></li>
+                        <li><a class="navbar-brand" href="#">
+                            <img src="/static/images/spade.png" width="30" height="30" class="d-inline-block align-top"
+                                 alt="">
+                            Ranking
+                        </a></li>
+                        <li><a class="navbar-brand" href="#">
+                            <img src="/static/images/diamond.png" width="30" height="30"
+                                 class="d-inline-block align-top" alt="">
+                            Profile
+                        </a></li>
+                        <li><a class="navbar-brand" href="#">
+                            <img src="/static/images/club.png" width="30" height="30" class="d-inline-block align-top"
+                                 alt="">
+                            Logout
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <hr>
+        <img >
+        <div class="createroome" >
+                <form >
+                    <label for="num" class="col-sm-3 contro-label">Max Player</label>
+                    <select id="num" class="custom-select">
+                        <option value="1">6</option>
+                        <option value="2">9</option>
+                    </select>
+                    <hr>
+
+                    <label for="blind" class="col-sm-3 contro-label">Stakes</label>
+                    <select id="blind" class="custom-select">
+                        <option value="1">10/20</option>
+                        <option value="2">25/50</option>
+                        <option value="3">50/100</option>
+                    </select>
+                    <hr>
+                    <label for="buyin" class="col-sm-3 contro-label">Buy In</label>
+                    <select id="buyin" class="custom-select">
+                        <option value="1">600</option>
+                        <option value="2">1500</option>
+                        <option value="3">3000</option>
+                    </select>
+
+                <button type="button" class="btn button_example" >Create</button>
+                </form>
+            </div>
+        </div>
+</header>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

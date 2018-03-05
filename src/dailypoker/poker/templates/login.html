@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block errorpanel %}
+    <label readonly="readonly">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </label>
+{% endblock %}
+{% block mainbody %}
+    <div style="height:100px">
+    </div>
+    <div class="poker-main-middle poker-login-middle">
+        <div class="row">
+            <div class="col-5">
+                <form class="form-signin" method="post" action="{% url 'login' %}">
+                    {% for field in form.visible_fields %}
+                        {{ field }}<br/>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            Don't have an account?<a href="{% url 'register' %}">&nbsp;&nbsp;&nbsp;Sign up »</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-block" type="submit">Sign in</button>
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {% csrf_token %}
+                </form>
+            </div>
+            <div class="col-7">
+                <h4>Play Games</h4>
+                <p>103,409 Daily Holdem Players!</p>
+                <br/>
+                <h4>Register to Play Poker Games</h4>
+                <p>match players, and then facilitate communication asfasdfasd year.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block mainbody %}
+    <div class="helppage">
+        <p class="rules-explain">
+            Poker is all about making the best five-card poker hand from the seven cards available (five community cards
+            plus your own two hole cards).
+            <br/>
+            For detail rules of Texas Holdem, please visite <a
+                href="https://www.partypoker.com/how-to-play/texas-holdem.html">partypoker.com</a>, we only list
+            hands ranking here.<br/>
+            In a nutshell, a hand consists of five cards. Poker hands fall into one of
+            several categories, such as flush, straight, or two pair. The player with the highest-ranked
+            hand is the winner.
+        </p>
+        <div class="row">
+            <div class="col-6">
+
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Royal flush</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/TD.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JD.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QD.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/KD.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/AD.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>A royal flush is an ace high straight flush. For example, A-K-Q-J-10 all of diamonds.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Straight flush</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/3C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/4C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/5C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/6C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/7C.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>A straight flush is a five-card straight, all in the same suit. For example, 7-6-5-4-3
+                            all of clubs.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Four of a kind</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/2H.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JC.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JH.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JS.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JD.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>Four of a kind, or quads, are four cards of equal value. For example, four jacks.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Full house</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/2C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/2H.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QS.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QH.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QC.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>A full house contains a set (3) of cards of one value and a pair of another value. For
+                            example, Q-Q-Q-2-2.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Flush</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/3D.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/6D.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/9D.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QD.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/KD.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>A flush is any 5 cards, all of the same suit. For example, K-Q-9-6-3 all of diamonds.</p>
+                    </div>
+                </div>
+                <br/>
+
+
+            </div>
+            <div class="col-6">
+
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Straight</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/3C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/4D.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/5C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/6H.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/7S.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>Five cards of sequential value. For example, 7-6-5-4-3 with different suits.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Three of a kind</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/4H.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/2C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/AH.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/AC.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/AD.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>Three cards of the same value. For example, three aces.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Two pairs</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/4C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/8D.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/8H.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JS.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JC.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>This is two cards of one value and another two cards of another value. For example, two
+                            jacks and two 8s.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">Pair</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/3C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/6S.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/7C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QH.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/QD.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>One pair is two cards of the same rank. For example, two queens.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="rules-category col-3">
+                        <h5 style="">High card</h5>
+                    </div>
+                    <div class="rules-cards col-3">
+                        <img class="rules-card1" src="{% static "images/cardset/4C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/7D.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/9C.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/JH.png" %}">
+                        <img class="rules-card2" src="{% static "images/cardset/KS.png" %}">
+                    </div>
+                    <div class="rules-explain col-6">
+                        <p>The hand with the highest card(s) wins.</p>
+                    </div>
+                </div>
+                <br/>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

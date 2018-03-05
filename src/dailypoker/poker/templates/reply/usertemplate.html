@@ -1,0 +1,35 @@
+{#<img src='/static/images/chip.png' width="50" height="50">#}
+{#<div class="status2">#}
+{#    <div class="writing2">#}
+{#        $55，66#}
+{#    </div>#}
+{#    <img style="width:60px;height:60px" class="pcard" src="/static/images/cardset/9C.png" alt="">#}
+{#    <img style="width:60px;height:60px" class="pcard" src="/static/images/cardset/5D.png" alt="">#}
+{#</div>#}
+{##}
+{#<p style='background:white;width:50px;height:50px'>{{ name }}</p>#}
+{#<div class='status2'>#}
+{#    <div class='writing2'>#}
+{#        ${{ begin_chips }},{{ round_bet }},{{ accum_bet }}#}
+{#    </div>#}
+{#    <img class='pcard1' src='https://deckofcardsapi.com/static/img/{{ card0 }}.png'>#}
+{#    <img class='pcard2' src='https://deckofcardsapi.com/static/img/{{ card1 }}.png'>#}
+{#</div>#}
+
+<div id='mainplayer' class='mainplayer'>
+    <img class='avaimg' alt='' src='/static/images/luffy.jpeg'>
+    <div class='rank-label-container'>
+        <div><span class='label label-default rank-label'>action</span></div>
+        <div><span id='mychips' class='label label-default rank-label2'>${{ begin_chip }}</span></div>
+        <p1>{{ name }}</p1>
+    </div>
+</div>
+<div id='mycards' class='mycards'>
+    <img class='pcard1' src='/static/images/cardset/{{ card0 }}.png'>
+    <img class='pcard2' src='/static/images/cardset/{{ card1 }}.png'>
+</div>
+<div id='myaccumbet' class='chip'>
+    <div><img class='chipimg' alt='' src='/static/images/chip.png'> ${{ accum_bet }}</div>
+</div>
+
+{#<p style='background: white;'>{{ name }}<br/>{{ begin_chips }}{{ round_bet }}<br/>{{ accum_bet }}<br/>{{ card0 }}<br/>{{ card1 }}</p>#}

@@ -1,0 +1,9 @@
+{
+  "id":"{{id}}",
+  "name":"{{name}}",
+"Beginchip":"{{BeginChip}}",
+  "RoundBet":"{{RoundBet}}",
+  "AccumBet":"{{AccumBet}}",
+  "card0":"{{card0}}",
+  "card1":"{{card1}}"
+}
