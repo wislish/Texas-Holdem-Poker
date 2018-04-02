@@ -39,9 +39,10 @@ ___
 
 ## Explanation
 
-1. Database design. To make sure all the relevant information as to one game and one player are stored, because users can **rejoin** the game if they lost the connection. Additionally, all the necessary operations for updating one game are under the model `Game` and `Player`, improving the maintainability and readability.
-2. Build `channel` between clients and the server through the WebSocket. So, the server can actively send messages to clients. 
-3. Perform extensive testing. Texas Hold’em Poker has many subtle but important rules. Once completed the basic implementation, we conducted enormous testing manually. In the future, it is a better idea to use Django test module. 
+1. Group project. You can find more information at the `specification` directory. We use Scrum development to split our whole project into three Sprint. 
+2. Database design. To make sure all the relevant information as to one game and one player are stored, because users can **rejoin** the game if they lost the connection. Additionally, all the necessary operations for updating one game are under the model `Game` and `Player`, improving the maintainability and readability. 
+3. Build `channel` between clients and the server through the WebSocket. So, the server can actively send messages to clients. 
+4. Perform extensive testing. Texas Hold’em Poker has many subtle but important rules. Once completed the basic implementation, we conducted enormous testing manually. In the future, it is a better idea to use Django test module. 
 
 
 
